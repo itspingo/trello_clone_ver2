@@ -1,0 +1,9 @@
+
+		<input
+			type="hidden"
+			id="[[field_name]]"
+			name="[[field_name]]"
+			value="@if(isset($row->[[field_name]])) {{ $row->[[field_name]] }} @endif"
+		/>
+		
+

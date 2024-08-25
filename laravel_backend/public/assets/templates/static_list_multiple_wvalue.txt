@@ -1,0 +1,25 @@
+ <div class="col-md-6 mt-3">
+	<div class="form-group">
+    <label class="form-label" for="[[field_name]]">[[field_label]]</label>    
+    @php        
+        if(!Empty($row)){ 
+            $selected = explode(',',$row->[[field_name]]); 
+        }else{
+            $selected = array();
+        }
+        $options =explode(',','[[staticList]]');
+    @endphp
+
+    <select class="form-control select2 select2-multiple" multiple="multiple" name="[[field_name]][]" id="[[field_name]]">
+        <!-- <option value="">--Select--</option> -->
+        @foreach ($options as $option)
+            <option value="{{$option}}" @if(in_array($option,$selected)) selected="selected" @endif > 
+                {{$option}} 
+            </option>
+        @endforeach    
+    </select>
+
+
+    </div>
+    <div id="diverr_[[field_name]]" text-danger></div>
+</div>

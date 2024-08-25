@@ -1,0 +1,22 @@
+
+<div class="col-md-12 mt-3">
+	<div class="form-group">
+		<label class="form-label" for="[[field_name]]">[[field_label]]</label>
+		
+		<textarea
+			id="[[field_name]]"
+			name="[[field_name]]"
+			class="form-control"
+			placeholder=""
+			maxlength="[[input_length]]"
+			[[isrequired]]
+			>@if(isset($row->[[field_name]])){{$row->[[field_name]]}}@endif</textarea>
+
+			<script>
+				CKEDITOR.replace('[[field_name]]');				
+			</script>
+
+
+	</div>
+	<div id="diverr_[[field_name]]" text-danger></div>
+</div>

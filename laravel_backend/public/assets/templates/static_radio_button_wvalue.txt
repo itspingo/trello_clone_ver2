@@ -1,0 +1,28 @@
+
+<div class="col-md-6 mt-3">
+	<div class="form-group">
+    <label class="form-label" for="[[field_name]]">[[field_label]]</label>
+    <br>
+@php
+    
+    if(!Empty($row)){ 
+        $selected = $row->[[field_name]];         
+    }else{
+        $selected = array();
+    }
+
+    $options =  $options = explode(',','[[staticList]]');
+
+ @endphp
+
+  @foreach ($options as $option)
+    <input class="form-check-input" type="radio" name="[[field_name]]" id="[[field_name]]" 
+    value="{{$option}}" @if($option == $selected) checked="checked" @endif  /> 
+    <label class='form-check-label' for='[[field_name]]'>{{$option}}</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  @endforeach    
+
+			
+</div>
+<div id="diverr_[[field_name]]" text-danger></div> 
+</div>

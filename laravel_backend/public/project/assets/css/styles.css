@@ -1,0 +1,983 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #026aa7;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-section, .right-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.dropdown {
+    margin-right: 20px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown i {
+    margin-left: 5px;
+}
+
+.create-button {
+    background-color: #5aac44;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-button:hover {
+    background-color: #519839;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.search-container input {
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+
+.search-container .search-button {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: #026aa7;
+}
+
+.search-container .search-button i {
+    font-size: 16px;
+}
+
+.icon {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    height: calc(100vh - 50px);
+}
+
+.left-menu {
+    width: 200px;
+    background-color: #014e7a;
+    color: white;
+    padding-top: 20px;
+    transition: width 0.3s;
+    position: relative;
+}
+
+.left-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-menu li {
+    margin: 10px 0;
+}
+
+.left-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.left-menu a:hover {
+    background-color: #444;
+}
+
+.left-menu .menu-text {
+    margin-left: 10px;
+    transition: opacity 0.3s;
+}
+
+.collapse-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    background-color: #014e7a;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    /* width: 1000px; */
+    /* overflow-y: auto; */
+    /* overflow-x: scroll;  Add horizontal scrollbar */
+    /* white-space: nowrap;  Prevent wrapping of content */
+}
+
+
+.collapsed {
+    width: 50px;
+}
+
+.collapsed .menu-text {
+    display: none;
+}
+
+.collapsed .collapse-button {
+    right: -10px;
+}
+
+.collapsed .collapse-button i {
+    transform: rotate(180deg);
+}
+
+.right-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.second-level-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #026aa7;
+    color: white;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-options, .right-options {
+    display: flex;
+    align-items: center;
+}
+
+.left-options a, .right-options a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.left-options a:hover, .right-options a:hover {
+    background-color: #005082;
+    border-radius: 5px;
+}
+
+.left-options a i, .right-options a i {
+    margin-right: 5px;
+}
+
+.board-name {
+    margin-right: 10px;
+}
+
+.share-button, .more-options-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.more-options-button {
+    position: relative;
+}
+
+.more-options-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.more-options-menu a {
+    color: black;
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.more-options-menu a:hover {
+    background-color: #f4f4f4;
+}
+
+
+
+.board {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    /* height: calc(100vh - 50px); */
+
+    width: 1000px;
+    overflow-y: auto;
+    overflow-x: scroll;  /* Add horizontal scrollbar */
+    white-space: nowrap; /* Prevent wrapping of content */
+
+}
+
+.list {
+    background-color: #e2e4e6;
+    border-radius: 3px;
+    min-width: 300px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    /* display: flex;
+    flex-direction: column; */
+
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    
+}
+
+.list h2 {
+    margin-top: 0;
+}
+
+.card {
+    background-color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 10px;
+    /* cursor: move; Indicate that the card is draggable */
+}
+
+/* .card {
+    
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+} */
+
+.edit-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #888;
+}
+
+.edit-icon:hover {
+    color: #000;
+}
+
+
+.grip-icon{
+    position: absolute;
+    /* right: 5px; */
+    top: 10px;
+    cursor: move;
+    color: #888;
+    /* padding-left: -5px; */
+}
+
+.grip-icon:hover {
+    color: #000;
+}
+
+.card_title{
+    margin-left: 15px;
+}
+
+.add-card-button {
+    background-color: #0079bf;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.add-card-button:hover {
+    background-color: #005a8b;
+}
+
+/* --------------------------------------------------------------------------------- */
+    /* Modal overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+    /* Hide scrollbar but keep scrolling */
+    .modal::-webkit-scrollbar {
+        display: none;
+    }
+
+    .modal {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Close button */
+    .modal .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color:#000;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Button to show modal */
+    .show-modal-btn {
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Button list */
+    .button-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .button-list li {
+        margin-bottom: 10px;
+    }
+
+    .button-list li button {
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .button-list li button i {
+        margin-right: 10px;
+    }
+
+    /* Create custom button */
+    .create-custom-btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+/* -------------------------------- edit card------------------------------------------------- */
+
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.dialog {
+    background-color: #fff;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+} 
+
+.dialog-left {
+    flex: 1;
+    padding: 10px;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+.dialog-left::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+.dialog-right {
+    width: 150px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-left: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.dialog-right button {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.dialog-right .btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    /* Ensures button takes full width */
+    padding: 10px;
+    /* Adjust padding as needed */
+    margin-bottom: 5px;
+    /* Adds space between buttons */
+    border: 1px solid #484646;
+    ;
+    background-color: #f1f1f1;
+    /* Adjust background color as needed */
+    cursor: pointer;
+}
+
+.dialog-right .btn i {
+    margin-right: 8px;
+    /* Adds space between icon and text */
+}
+
+.dialog-right .btn:hover {
+    background-color: #ddd;
+    /* Change background on hover */
+}
+
+.section {
+    margin-bottom: 15px;
+}
+
+.section h5 {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.user-section .user {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.user-section .user img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.user-section .add-user {
+    display: inline-block;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.labels {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.label {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    /* Optional: for visual separation */
+}
+
+.file-name {
+    flex-grow: 1;
+    /* Ensures the file name takes up available space */
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+    /* Adds space between icons */
+}
+
+.file-actions i {
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+}
+
+.checklist-group {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.checklist-group .group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checklist-group .checklist-items {
+    display: none;
+    padding-top: 10px;
+}
+
+.add-item {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.progress {
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    height: .25rem;
+    /* Adjust the height as needed */
+    overflow: hidden;
+    width: 100%;
+    /* Adjust the width as needed */
+    margin-top: 0.5rem;
+    /* Add margin as needed */
+}
+
+.progress-bar {
+    background-color: #007bff;
+    width: 0%;
+    /* This will be dynamically set by inline style */
+    height: 100%;
+    transition: width 0.6s ease;
+}
+
+
+
+
+.dates-row {
+    display: flex;
+    justify-content: space-between;
+    /* Adjust spacing as needed */
+    gap: 1rem;
+    /* Optional: Adjust gap between columns */
+    align-items: center;
+    /* Center align items vertically */
+}
+
+.date-col {
+    flex: 1;
+    /* Make each column take equal space */
+    max-width: 45%;
+    /* Adjust max-width as needed */
+}
+
+.date-col input[type="date"] {
+    width: 100%;
+    /* Make input take full width of its container */
+    padding: 0.5rem;
+    /* Optional: Add padding for better spacing */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect total width */
+}
+
+
+@media screen and (max-width: 768px) {
+    .dialog {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .dialog-left,
+    .dialog-right {
+        width: 100%;
+    }
+}
+ 
+/* --------------------------------------------------------------------------------- */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .form-group {
+        margin-bottom: 5px;
+    }
+
+    /* Form elements */
+    .modal input[type="text"],
+    .modal select {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+
+    .modal h3 {
+        margin-bottom: 20px;
+    }
+
+    .error {
+        color: red;
+        font-size: 0.875em;
+    }
+
+
+/* ------------------------------- add label -------------------------------------------------- */
+
+
+    .modal h5 {
+        margin: 20px 0 10px;
+    }
+
+    /* Labels */
+    .labels {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .label-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #f9f9f9;
+        gap: 10px;
+    }
+
+    .label-item .label-color {
+        flex-grow: 1;
+        height: 20px;
+    }
+
+    .label-item .label-edit {
+        margin-left: 10px;
+    }
+
+    /* Create new label button */
+    .create-new-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: #0079bf;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .create-new-label:hover {
+        background-color: #005a8c;
+    }
+
+    /* ------------------------------ card cover --------------------------------------------------- */
+
+      /* Cover options */
+      .cover-options {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .cover-options button {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .color-box {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .image-upload {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    /* File upload styling */
+    .file-upload-label {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #0079bf;
+        color: white;
+        text-align: center;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .file-upload-label:hover {
+        background-color: #005a8c;
+    }
+
+    .file-upload-input {
+        display: none;
+    }
+
+    .background-images {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .background-image {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 4px;
+        background-size: cover;
+        background-position: center;
+    }
+
+/* -------------------------------------- card member------------------------------------------------------------ */
+
+ /* Members */
+ .members {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    gap: 10px;
+}
+
+.member-item .member-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.member-item .member-name {
+    flex-grow: 1;
+}
+
+
+/* -------------------------------------------------------------------------------------------------- */
+
+    .modal button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .modal input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        margin-top: -10px;
+        box-sizing: border-box;
+    }
+
+    /* Update button */
+    .modal .update-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .modal textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        margin-top: -10px;
+        box-sizing: border-box;
+    }
+
+      /* Member list */
+      .modal .member-list img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    /* Filter options */
+    .filter-option {
+        margin-bottom: 15px;
+    }
+
+@media only screen and (max-width: 768px) {
+    .top-menu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .left-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .right-section {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .top-menu .dropdown {
+        margin-right: 10px;
+    }
+
+    .left-menu {
+        width: 100%;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .second-level-menu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .left-options, .right-options {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 10px;
+    }
+
+    .left-options a, .right-options a {
+        justify-content: flex-start;
+        margin-bottom: 5px;
+    }
+
+    .share-button, .more-options-button {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .more-options-menu {
+        top: auto;
+        bottom: 30px;
+    }
+}
+
+

@@ -1,0 +1,70 @@
+@extends('layouts.app')
+@section('content')
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                    <form action="{{ URL::to('[[controllerName]]/'.$submit_path) }}" method="POST" ENCTYPE="multipart/form-data" >
+                        @csrf
+                    <div class="card-header">
+                        <div class="row" >
+                            <div class="col-3 text-start">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="card-title">{{ucwords($module_name)}} </h4>
+                                </div>
+                            </div>
+                            <div class="col-6 text-center">
+                                @if(session('msg_success') != '')
+                                    <div class="alert alert-success">{{session('flash_success')}}</div>
+                                @endif
+                                @if(session('msg_failure') != '')
+                                    <div class="alert alert-danger">{{session('flash_failure')}}</div>
+                                @endif
+                            </div>
+                            <div class="col-3 text-end">
+                                <a href="{{URL::to('[[controllerName]]')}}" class="btn btn-info btn-md"  >List Page</a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="card-body">
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                
+                                        
+                                            <div class="row"> 
+
+                                                    [[formInputFields]]
+                                                
+                                            </div>
+                                            
+                                            <input type="hidden" name="continue" id="continue" value="Y" />
+                                            <input type="hidden" name="id" id="id" value="" />
+                                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="row " > 
+                                <div class="col-md-6 text-start mt-2">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light w-md">Submit</button>
+                                </div>
+                                <div class="col-md-6 text-end  mt-2">
+                                    <button type="reset" class="btn btn-outline-danger waves-effect waves-light w-md">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+
+
+@endsection
