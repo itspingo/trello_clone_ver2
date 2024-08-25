@@ -1,0 +1,46 @@
+.background-image {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* .add-list-button {
+  width: 20%;
+  display: flex;
+  justify-content: left;
+  background-color: #ffffff3d;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-size: medium ;
+} */
+
+.add-list-button {
+  max-width: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: left;
+  background-color: #ffffff3d;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-size: medium;
+  padding: 8px;
+  margin-top: 8px;
+}
+
+/* Add some margin or padding to ensure there's space between the rows */
+.add-list-container {
+  margin-bottom: 10px;
+}
+/* .add-list-button mat-icon {
+  margin-right: 5px;
+} */
+
+
+
+
+
+

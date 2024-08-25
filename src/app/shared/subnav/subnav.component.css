@@ -1,0 +1,55 @@
+.subnavbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #0000003d;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  color: #e0e0e0;
+}
+
+.left-section .board-title {
+  font-weight: bold;
+  margin: 0 8px;
+}
+
+.middle-section {
+  display: flex;
+  align-items: center;
+}
+
+.middle-section .board-view-button {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  color: #e0e0e0;
+}
+
+.right-section mat-icon {
+  margin-right: 4px;
+}
+
+.right-section .share-button {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-left: 8px;
+}
+
+.right-section .user-initials {
+  margin-left: 4px;
+}
+
+.right-section mat-icon-button {
+  margin-left: 8px;
+}

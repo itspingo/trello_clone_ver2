@@ -1,0 +1,59 @@
+
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      <input [formControl]="cardListTitle" />
+    </mat-card-title>
+  </mat-card-header>
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content *ngFor="let text of cardTexts; let i = index" class="card-content">
+    <div class="card-text">{{text}}
+      <span class="edit-button-container">
+        <button class="custom-edit-button" (click)="editCard(i)">
+          <mat-icon class="edit-icon">edit</mat-icon>
+        </button>
+      </span>
+    </div>
+  </mat-card-content>
+
+  <div class="add-text-field-container">
+    <mat-form-field style="background-color: #28242c;" *ngIf="isAddingCard" appearance="outline" class="full-width">
+      <mat-label style="color: white;">Enter a name for this card</mat-label>
+      <textarea matInput [(ngModel)]="newCardText" rows="1"></textarea>
+    </mat-form-field>
+  </div>
+
+
+
+  <mat-card-footer class="example-card-footer">
+    <!-- Toggle input field visibility -->
+    <div class="add-card-container">
+      <button mat-button *ngIf="!isAddingCard" (click)="toggleAddCard()" class="add-user-button">
+        <mat-icon>add</mat-icon>
+        Add a card
+      </button>
+    </div>
+
+
+    <!-- Display Save and Cancel buttons when input is visible -->
+    <div *ngIf="isAddingCard">
+      <button mat-button (click)="addCard()" color="primary">
+        <mat-icon>add</mat-icon>
+        Add card</button>
+      <button mat-button (click)="cancelAddCard()" color="warn">
+        <mat-icon>cancel</mat-icon>
+        Cancel
+      </button>
+    </div>
+
+    <!-- <ul>
+      <li *ngFor="let text of cardTexts">{{ text }}</li>
+    </ul> -->
+    <!-- <mat-chip-set aria-label="Chihuahua traits">
+
+      <mat-chip>charming</mat-chip>
+      <mat-chip>graceful</mat-chip>
+      <mat-chip>sassy</mat-chip>
+    </mat-chip-set> -->
+  </mat-card-footer>
+</mat-card>
