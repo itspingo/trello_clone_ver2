@@ -2,17 +2,29 @@
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
     <mat-card-title>
-      <input [formControl]="cardListTitle" />
+      <!-- <input [formControl]="cardListTitle" placeholder="{{ card.card_list_title }}" /> -->
+      <input [value]="card.card_list_title" [formControl]="cardListTitle" (input)="updateTitle(cardListTitle.value!)" />
     </mat-card-title>
+    <button mat-icon-button>
+      <mat-icon>matCompress</mat-icon>
+    </button>
+    <span class="more-button">
+      <button mat-icon-button>
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+    </span>
+
   </mat-card-header>
   <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-  <mat-card-content *ngFor="let text of cardTexts; let i = index" class="card-content">
-    <div class="card-text">{{text}}
-      <span class="edit-button-container">
-        <button class="custom-edit-button" (click)="editCard(i)">
-          <mat-icon class="edit-icon">edit</mat-icon>
-        </button>
-      </span>
+  <mat-card-content cdkDropList [cdkDropListData]="cardTextsArray" (cdkDropListDropped)="dropText($event)">
+    <div cdkDrag *ngFor="let text of cardTextsArray; let i = index" class="card-content">
+      <div (click)="openDialog(text)" class="card-text">{{text}}
+        <span class="edit-button-container">
+          <button class="custom-edit-button" (click)="editCard(i)">
+            <mat-icon class="edit-icon">edit</mat-icon>
+          </button>
+        </span>
+      </div>
     </div>
   </mat-card-content>
 
@@ -45,15 +57,5 @@
         Cancel
       </button>
     </div>
-
-    <!-- <ul>
-      <li *ngFor="let text of cardTexts">{{ text }}</li>
-    </ul> -->
-    <!-- <mat-chip-set aria-label="Chihuahua traits">
-
-      <mat-chip>charming</mat-chip>
-      <mat-chip>graceful</mat-chip>
-      <mat-chip>sassy</mat-chip>
-    </mat-chip-set> -->
   </mat-card-footer>
 </mat-card>

@@ -8,10 +8,14 @@
         <mat-icon>expand_more</mat-icon>
       </a>
       <mat-menu #workspacesMenu="matMenu">
-        <span class="nav-dropdown-text-color"><p style="font-size: small; padding-left: 8px;">Current Workspace</p></span>
+        <span class="nav-dropdown-text-color">
+          <p style="font-size: small; padding-left: 8px;">Current Workspace</p>
+        </span>
         <button class="nav-dropdown-text-color" mat-menu-item routerLink="/project1" disabled>Trello Workspace</button>
         <hr>
-        <span class class="nav-dropdown-text-color"><p style="font-size: small; padding-left: 8px;">Your Workspace</p></span>
+        <span class class="nav-dropdown-text-color">
+          <p style="font-size: small; padding-left: 8px;">Your Workspace</p>
+        </span>
         <button class="nav-dropdown-text-color" mat-menu-item routerLink="/project2">Trello Workspace</button>
       </mat-menu>
     </li>
@@ -53,9 +57,9 @@
     </li>
   </ul>
 
-  <span>
+  <div>
     <mat-menu #menu="matMenu" class="create-dropdown">
-      <button mat-menu-item class="menu-item">
+      <button mat-menu-item class="menu-item" (click)="openDialog()">
         <div class="menu-text">
           <mat-list-item class="font-style">
             <div>
@@ -103,9 +107,21 @@
       </button>
     </mat-menu>
 
-  </span>
+  </div>
 
   <button class="create-add-dropdown" [matMenuTriggerFor]="menu" aria-label="Add">
     <mat-icon>add</mat-icon>
   </button>
+
+  <div class="search-bar">
+    <mat-form-field appearance="outline">
+      <input (input)="searchfield($event)" matInput type="search">
+      <button matSuffix mat-icon-button aria-label="Search">
+        <mat-icon>search</mat-icon>
+      </button>
+      <!-- <span>
+        {{ searchFieldText }}
+      </span> -->
+    </mat-form-field>
+  </div>
 </div>

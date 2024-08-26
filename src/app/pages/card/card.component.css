@@ -17,6 +17,11 @@ mat-card-title input {
   width: 100%;
 }
 
+  /* .more-button {
+    display: flex;
+    justify-content: flex-end;
+  } */
+
 
 .menu-item {
   display: flex;

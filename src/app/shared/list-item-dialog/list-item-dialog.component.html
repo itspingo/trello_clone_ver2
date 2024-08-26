@@ -1,0 +1,44 @@
+<span style="background-color: #323940; color: aliceblue;" mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+  <span>{{ title }}</span>
+  <button mat-icon-button (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</span>
+<div></div>
+<mat-dialog-content style="background-color: #323940;"  fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="16px">
+  <!-- 70% Container -->
+  <div fxFlex="80" class="input-container">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Description" [(ngModel)]="description">
+    </mat-form-field>
+
+    <div class="custom-fields">
+      <mat-form-field>
+        <mat-select placeholder="Priority">
+          <mat-option *ngFor="let option of priorities" [value]="option">{{option}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-checkbox>new city</mat-checkbox>
+      <mat-form-field>
+        <mat-select placeholder="Status">
+          <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Risk">
+          <mat-option *ngFor="let risk of risks" [value]="risk">{{risk}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Activity"></textarea>
+    </mat-form-field>
+  </div>
+
+  <!-- 30% Container -->
+  <div fxFlex="20" class="button-column">
+    <!-- <span>add to card</span> -->
+    <button class="transparent-button" *ngFor="let button of buttons" mat-button>{{button}}</button>
+  </div>
+</mat-dialog-content>

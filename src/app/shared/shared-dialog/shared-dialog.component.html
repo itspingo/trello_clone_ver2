@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>{{ data.fieldLabel }}</mat-label>
+    <input matInput [placeholder]="data.placeholder" [(ngModel)]="data.fieldValue" required>
+    <mat-error *ngIf="isFieldInvalid()">
+      <mat-icon>pan_tool</mat-icon> {{ data.errorMessage }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Visibility</mat-label>
+    <mat-select [(value)]="data.visibility">
+      <mat-option *ngFor="let option of data.visibilityOptions" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [disabled]="isFieldInvalid()" (click)="onSubmit()">Create</button>
+  <!-- <button mat-button (click)="onTemplate()">Start with a template</button> -->
+</mat-dialog-actions>
+
+<!-- <div class="footer-note">
+  <p>By using images from Unsplash, you agree to their license and Terms of Service</p>
+</div> -->

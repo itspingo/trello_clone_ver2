@@ -1,0 +1,32 @@
+.full-width {
+  width: 100%;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: gray;
+  margin-top: 10px;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: #2c2f33; /* Customize dialog container background */
+  color: white; /* Default text color */
+}
+
+::ng-deep .mat-dialog-title {
+  color: #ffffff; /* Customize title color */
+}
+
+::ng-deep .mat-dialog-content {
+  background-color: #2c2f33; /* Customize content background */
+  color: #ccc; /* Content text color */
+}
+
+::ng-deep .mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+::ng-deep .mat-error {
+  color: #ffcc00; /* Customize error color */
+}

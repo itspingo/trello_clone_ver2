@@ -23,6 +23,12 @@ import { SubnavComponent } from 'src/app/shared/subnav/subnav.component';
 import { SidebarComponent } from 'src/app/shared/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { CdkDrag, CdkDropList, CdkDropListGroup, DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SharedDialogComponent } from 'src/app/shared/shared-dialog/shared-dialog.component';
+import { MatSelectModule } from '@angular/material/select'
+import { ListItemDialogComponent } from 'src/app/shared/list-item-dialog/list-item-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -34,6 +40,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     SubnavComponent,
     SidebarComponent,
     CardComponent,
+    SharedDialogComponent,
+    ListItemDialogComponent
 
   ],
   imports: [
@@ -56,7 +64,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     MatExpansionModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule,
+    CdkDropListGroup,
+    CdkDropList,
+    CdkDrag,
+    MatDialogModule,
+    MatSelectModule,
+    MatCheckboxModule
+
   ],
 
   providers: [

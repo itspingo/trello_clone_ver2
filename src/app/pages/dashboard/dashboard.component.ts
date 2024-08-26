@@ -1,31 +1,31 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ChangeDetectionStrategy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CardService } from 'src/app/shared/card.service';
-import { Cards } from 'src/app/shared/models/cards';
-
+import { Card } from 'src/app/shared/models/cards';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent implements OnInit, OnChanges {
+export class DashboardComponent implements OnInit {
 
   isAddingCard: boolean = false;
-  cards: any[] = [];
+  cards: Card[] = [];
 
   constructor(private cardservice: CardService) {}
 
   ngOnInit(): void {
-    // this.loadCards();
+    this.loadCards();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-
-    if (this.isAddingCard) {
-      this.loadCards();
-      this.isAddingCard = false;
-    }
+  drop(event: CdkDragDrop<Card[]>) {
+    console.log("Previous Index:", event.previousIndex);
+    console.log("Current Index:", event.currentIndex);
+    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+    console.log("Cards after rearrangement:", this.cards);
   }
+
 
   loadCards(): void {
     this.cardservice.getCards().subscribe((cards) => {
@@ -35,15 +35,15 @@ export class DashboardComponent implements OnInit, OnChanges {
   }
 
   pushCard() {
-    const newCard = { card_list_title: '', card_text: '' }; // placeholder for new card
+    const newCard = { card_list_title: '', card_text: [] };
     this.cards.push(newCard);
     console.log("Pushed Cards-->", this.cards);
   }
 
-  onCardUpdate(index: number, updatedData: any) {
+  onCardUpdate(index: number, updatedData: Card) {
     const payload = {
       card_list_title: updatedData.card_list_title,
-      card_text: updatedData.card_text
+      card_text: updatedData.card_text,
     };
 
     this.cardservice.addCards(payload).subscribe(card => {

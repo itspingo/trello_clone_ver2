@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Cards } from './models/cards';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Card } from './models/cards';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +9,26 @@ import { Cards } from './models/cards';
 export class CardService {
 
   private apiUrl = 'http://localhost:8000/api/cards';
+  private titleSource = new BehaviorSubject<string>('');
+  currentTitle = this.titleSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  addCards(cardData: Cards): Observable<Cards> {
-    return this.http.post<Cards>(`${this.apiUrl}`, cardData);
+  getCards(): Observable<Card[]> {
+    return this.http.get<Card[]>(`${this.apiUrl}`);
   }
 
-  getCards(): Observable<Cards[]> {
-    return this.http.get<Cards[]>(`${this.apiUrl}`);
+  addCards(cardData: Card): Observable<Card> {
+    return this.http.post<Card>(`${this.apiUrl}`, cardData);
   }
+
+  updateCard(cardId: number, updatedCard: Card): Observable<Card> {
+    return this.http.put<Card>(`${this.apiUrl}/cards/${cardId}`, updatedCard);
+  }
+
+  changeTitle(title: string) {
+    this.titleSource.next(title);
+  }
+
 }
 

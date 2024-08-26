@@ -1,0 +1,33 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjust spacing between elements if needed */
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Adjust spacing between buttons if needed */
+}
+
+.button-column button {
+  width: 100%;
+}
+
+.transparent-button {
+  color: #B6C2CF;
+  background-color: #40444c;
+  border: none;
+  box-shadow: none;
+  padding: 8px 16px;
+}
+
+
+
+.transparent-button:hover {
+  background-color: #ffffff3d; /* Optional: Add a slight hover effect */
+}
+
+.mat-input-element {
+  color: #ff5722; /* Set the text color */
+}

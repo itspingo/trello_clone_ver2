@@ -1,29 +1,26 @@
-<app-navbar></app-navbar>
-<span>
-<app-subnav></app-subnav>
-</span>
-
-<!-- <app-sidebar></app-sidebar> -->
-
-
-<div style="box-sizing: border-box;">
-  <img class="background-image" src="../../assets/sunset.jpg" alt="NoImageFound" />
-</div>
-
-<span>
-  <h1 style="color: white;">My Board</h1>
-</span>
-
-<div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="12px">
-  <ng-container *ngFor="let card of cards; let i = index">
-    <board-card (cardUpdate)="onCardUpdate(i, $event)">
-    </board-card>
-  </ng-container>
-
-  <div class="add-list-container" fxFlex="0 1 calc(33.333% - 16px)">
-    <button mat-button *ngIf="!isAddingCard;" (click)="pushCard()" class="add-list-button">
-      <mat-icon>add</mat-icon>
-      {{ cards.length === 0 ? 'Add a list' : 'Add another list' }}
-    </button>
+<div fxLayout="column" class="container">
+  <app-navbar></app-navbar>
+  <div fxLayout="row" fxLayoutAlign="start start" class="main-content">
+    <app-sidebar class="sidebar"></app-sidebar>
+    <div fxFlex="100">
+      <span>
+        <app-subnav></app-subnav>
+      </span>
+      <div style="box-sizing: border-box;">
+        <img class="background-image" src="../../assets/sunset.jpg" alt="NoImageFound" />
+      </div>
+      <div cdkDropList fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="12px" (cdkDropListDropped)="drop($event)">
+        <ng-container *ngFor="let card of cards; let i = index">
+          <board-card cdkDrag [card]="card" (cardUpdate)="onCardUpdate(i, $event)">
+          </board-card>
+        </ng-container>
+        <div class="add-list-container" fxFlex="0 1 calc(33.333% - 16px)">
+          <button mat-button *ngIf="!isAddingCard;" (click)="pushCard()" class="add-list-button">
+            <mat-icon>add</mat-icon>
+            {{ cards.length === 0 ? 'Add a list' : 'Add another list' }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
