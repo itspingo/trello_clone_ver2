@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  isSidebarOpened = true;
+
+  // Optional: You can also create a method to toggle the sidebar state
+  toggleSidebar() {
+    this.isSidebarOpened = !this.isSidebarOpened;
+  }
+
 }

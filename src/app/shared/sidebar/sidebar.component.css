@@ -5,9 +5,23 @@
 .sidenav {
   background-color: #28242c;
   color: #ecf0f1;
-  display: flex;
+  width: 250px;
+  transition: width 0.3s ease-in-out;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
+}
+
+.sidenav.collapsed {
+  width: 50px;
+}
+
+.mat-sidenav-content {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.mat-sidenav-content.collapsed {
+  margin-left: 50px;
 }
 
 .sidebar-header {

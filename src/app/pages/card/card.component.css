@@ -83,6 +83,11 @@ mat-card-title input {
 
 .edit-button-container {
   margin-left: auto;
+  visibility: hidden;
+}
+
+.card-text:hover .edit-button-container {
+  visibility: visible;
 }
 
 .font-style {

@@ -2,14 +2,14 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-shared-dialog',
-  templateUrl: './shared-dialog.component.html',
-  styleUrls: ['./shared-dialog.component.css']
+  selector: 'app-board-dialog',
+  templateUrl: './board-dialog.component.html',
+  styleUrls: ['./board-dialog.component.css']
 })
-export class SharedDialogComponent {
+export class BoardDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<SharedDialogComponent>,
+    public dialogRef: MatDialogRef<BoardDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 

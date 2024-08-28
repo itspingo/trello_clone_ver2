@@ -8,9 +8,19 @@
   margin-top: 10px;
 }
 
-::ng-deep .mat-dialog-container {
-  background-color: #2c2f33; /* Customize dialog container background */
-  color: white; /* Default text color */
+::ng-deep .board-dialog {
+  background-color: #2c2f33;
+  color: white;
+}
+
+.board-header {
+  background-color: #2c2f33;
+  color: white;
+}
+
+.board-footer {
+  background-color: #2c2f33;
+  color: white;
 }
 
 ::ng-deep .mat-dialog-title {

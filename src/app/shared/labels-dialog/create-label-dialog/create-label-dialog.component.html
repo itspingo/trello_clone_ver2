@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Create Label</h2>
+<div mat-dialog-content>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Title" [(ngModel)]="labelTitle">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <p-colorPicker [(ngModel)]="selectedColor"></p-colorPicker>
+  </mat-form-field>
+  <div class="color-preview" [style.background]="selectedColor"></div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="createLabel()">Create</button>
+</div>

@@ -105,7 +105,8 @@ export class CardComponent implements OnInit {
   openDialog(title: string): void {
     const dialogRef = this.dialog.open(ListItemDialogComponent, {
       width: '60%',
-      data: { title }
+      height: '100%',
+      data: { title, cardListTitle: this.cardListTitle.value }
     });
 
     dialogRef.afterClosed().subscribe(result => {

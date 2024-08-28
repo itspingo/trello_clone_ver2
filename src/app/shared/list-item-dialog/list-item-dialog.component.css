@@ -4,6 +4,23 @@
   gap: 16px; /* Adjust spacing between elements if needed */
 }
 
+.dialog-header {
+  background-color: #323940;
+  color: aliceblue;
+}
+
+.header-visibility-icon {
+  font-size: medium;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+
+.cardListTitle {
+  font-size: small;
+  text-decoration: underline;
+}
+
 .button-column {
   display: flex;
   flex-direction: column;
@@ -31,3 +48,7 @@
 .mat-input-element {
   color: #ff5722; /* Set the text color */
 }
+
+
+
+

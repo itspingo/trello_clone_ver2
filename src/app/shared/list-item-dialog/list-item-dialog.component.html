@@ -1,44 +1,82 @@
-<span style="background-color: #323940; color: aliceblue;" mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
-  <span>{{ title }}</span>
-  <button mat-icon-button (click)="onCancel()">
-    <mat-icon>close</mat-icon>
-  </button>
-</span>
-<div></div>
-<mat-dialog-content style="background-color: #323940;"  fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="16px">
-  <!-- 70% Container -->
-  <div fxFlex="80" class="input-container">
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Description" [(ngModel)]="description">
-    </mat-form-field>
+<div>
+  <span class="dialog-header" mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <span fxFlex="start">{{ cardListItemText }}
+      <div class="cardListTitle">
+        <span>
+          in list {{ cardListTitle }}
+          <mat-icon *ngIf="visibility" class="header-visibility-icon">visibility</mat-icon>
+        </span>
+      </div>
+    </span>
+    <button mat-icon-button (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </span>
+  <mat-dialog-content style="background-color: #323940;" fxLayout="row" fxLayoutAlign="start stretch"
+    fxLayoutGap="16px">
+    <!-- 70% Container -->
+    <div fxFlex="100" class="input-container">
+      <span style="font-size: small; padding-top: 10px;">
+        Notifications
+      </span>
 
-    <div class="custom-fields">
-      <mat-form-field>
-        <mat-select placeholder="Priority">
-          <mat-option *ngFor="let option of priorities" [value]="option">{{option}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-checkbox>new city</mat-checkbox>
-      <mat-form-field>
-        <mat-select placeholder="Status">
-          <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Risk">
-          <mat-option *ngFor="let risk of risks" [value]="risk">{{risk}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <span>
+        <button mat-flat-button (click)="toggleVisibility()">
+          <mat-icon>visibility</mat-icon>
+          {{ visibility ? 'Watching' : 'Watch' }}
+          <mat-icon *ngIf="visibility" class="tick-icon">check</mat-icon>
+        </button>
+      </span>
+      <!-- <mat-form-field class="full-width">
+        <input matInput placeholder="Description" [(ngModel)]="description">
+      </mat-form-field> -->
+      <span>
+        <mat-icon>description</mat-icon>
+        Description
+      </span>
+      <!-- <div>
+        <quill-editor class="description-editor-container" [(ngModel)]="description" [modules]="quillConfig"
+          placeholder="Write your description here..."></quill-editor>
+      </div> -->
+      <div class="description-card">
+        <form [formGroup]="descFormGroup">
+          <p-editor formControlName="text" [style]="{ height: '200px' }"></p-editor>
+        </form>
+      </div>
+
+      <div fxFlex="100" fxLayoutGap="50" class="custom-fields">
+        <p-dropdown [options]="priorities" placeholder="Priority"></p-dropdown>
+        <!-- <p-checkbox label="new city"></p-checkbox> -->
+        <p-dropdown [options]="statuses" placeholder="Status"></p-dropdown>
+        <p-dropdown [options]="risks" placeholder="Risk"></p-dropdown>
+      </div>
+
+      <!-- <mat-form-field class="full-width">
+        <textarea matInput placeholder="Activity"></textarea>
+      </mat-form-field> -->
+      <span>
+        <mat-icon>event</mat-icon>
+        Activity
+      </span>
+      <div class="activity-card">
+        <form [formGroup]="activityFormGroup">
+          <p-editor formControlName="text" [style]="{ height: '100px' }"></p-editor>
+        </form>
+      </div>
+
+
     </div>
 
-    <mat-form-field class="full-width">
-      <textarea matInput placeholder="Activity"></textarea>
-    </mat-form-field>
-  </div>
+    <!-- 30% Container -->
+    <div fxFlex="20" class="button-column">
+      <!-- <span>add to card</span> -->
+      <button (click)="onButtonClick(button)" class="transparent-button" *ngFor="let button of addToCardButtons"
+        mat-button>{{button}}</button>
+      <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
+      <button class="transparent-button" *ngFor="let button of actionButtons" mat-button>{{button}}</button>
 
-  <!-- 30% Container -->
-  <div fxFlex="20" class="button-column">
-    <!-- <span>add to card</span> -->
-    <button class="transparent-button" *ngFor="let button of buttons" mat-button>{{button}}</button>
-  </div>
-</mat-dialog-content>
+    </div>
+  </mat-dialog-content>
+
+</div>

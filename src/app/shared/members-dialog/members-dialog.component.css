@@ -1,0 +1,47 @@
+.full-width {
+  width: 100%;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: gray;
+  margin-top: 10px;
+}
+
+::ng-deep .members-dialog {
+  background-color: #2c2f33;
+  color: white;
+}
+
+.board-header {
+  background-color: #2c2f33;
+  color: white;
+}
+
+.board-footer {
+  background-color: #2c2f33;
+  color: white;
+}
+
+::ng-deep .mat-dialog-title {
+  color: #ffffff;
+}
+
+::ng-deep .mat-dialog-content {
+  background-color: #2c2f33;
+  color: #ccc;
+}
+
+::ng-deep .mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+::ng-deep .mat-error {
+  color: #ffcc00;
+}
+
+.searched-members-container {
+  background-color: transparent;
+  width: 100%;
+}

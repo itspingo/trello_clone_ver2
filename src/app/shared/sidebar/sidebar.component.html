@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened class="sidenav">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav" [(opened)]="isSidebarOpened">
     <div class="sidebar-header">
       <mat-icon>dashboard</mat-icon>
       <span>Trello Workspace</span>
@@ -42,7 +42,9 @@
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content>
-
+  <mat-sidenav-content style="background-color: #383c44;">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>{{ isSidebarOpened ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+    </button>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Labels</h2>
+<div mat-dialog-content>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Search labels..." [(ngModel)]="searchText">
+  </mat-form-field>
+  <div *ngFor="let label of filteredLabels()">
+    <mat-checkbox (change)="toggleLabel(label)" [checked]="isChecked(label)">
+      <span [style.background]="label.color" class="label-color-box"></span>
+      {{label.title}}
+    </mat-checkbox>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="openCreateLabelDialog()">Create a new label</button>
+</div>
+

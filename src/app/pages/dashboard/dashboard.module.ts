@@ -25,10 +25,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CdkDrag, CdkDropList, CdkDropListGroup, DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SharedDialogComponent } from 'src/app/shared/shared-dialog/shared-dialog.component';
+import { BoardDialogComponent } from 'src/app/shared/board-dialog/board-dialog.component';
 import { MatSelectModule } from '@angular/material/select'
 import { ListItemDialogComponent } from 'src/app/shared/list-item-dialog/list-item-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MembersDialogComponent } from 'src/app/shared/members-dialog/members-dialog.component';
+import { EditorModule } from 'primeng/editor';
+import { DropdownModule } from 'primeng/dropdown';
+import { LabelsDialogComponent } from 'src/app/shared/labels-dialog/labels-dialog.component';
+import { CreateLabelDialogComponent } from 'src/app/shared/labels-dialog/create-label-dialog/create-label-dialog.component';
+
+
+
+
+
 
 
 
@@ -40,10 +50,14 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     SubnavComponent,
     SidebarComponent,
     CardComponent,
-    SharedDialogComponent,
-    ListItemDialogComponent
+    BoardDialogComponent,
+    ListItemDialogComponent,
+    MembersDialogComponent,
+    LabelsDialogComponent,
+    CreateLabelDialogComponent
 
   ],
+
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -71,7 +85,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     CdkDrag,
     MatDialogModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    EditorModule,
+    DropdownModule
 
   ],
 

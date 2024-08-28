@@ -9,7 +9,8 @@
       <div style="box-sizing: border-box;">
         <img class="background-image" src="../../assets/sunset.jpg" alt="NoImageFound" />
       </div>
-      <div cdkDropList fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="12px" (cdkDropListDropped)="drop($event)">
+
+      <div style="padding: 20px;" cdkDropList fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="12px" (cdkDropListDropped)="drop($event)">
         <ng-container *ngFor="let card of cards; let i = index">
           <board-card cdkDrag [card]="card" (cardUpdate)="onCardUpdate(i, $event)">
           </board-card>

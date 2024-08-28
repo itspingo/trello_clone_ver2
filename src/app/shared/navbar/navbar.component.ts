@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SharedDialogComponent } from '../shared-dialog/shared-dialog.component';
+import { BoardDialogComponent } from '../board-dialog/board-dialog.component';
 import { CardService } from '../card.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class NavbarComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(SharedDialogComponent, {
+    const dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '400px',
       data: {
         title: 'Board title',

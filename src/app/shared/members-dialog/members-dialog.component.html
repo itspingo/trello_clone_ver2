@@ -1,0 +1,23 @@
+<span class="board-header" fxLayoutAlign="space-between center" mat-dialog-title>{{ data.title }}
+  <button mat-icon-button (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</span>
+
+<mat-dialog-content class="members-dialog">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ data.fieldLabel }}</mat-label>
+    <input matInput [placeholder]="data.placeholder" (input)="searchMembers($event)">
+  </mat-form-field>
+
+  <button disabled="true" mat-stroked-button class="searched-members-container">
+    <mat-icon>account_circle</mat-icon>
+    {{ memberSearchText }}
+  </button>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="board-footer" align="end">
+
+</mat-dialog-actions>
