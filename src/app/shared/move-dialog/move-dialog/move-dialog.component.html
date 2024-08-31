@@ -1,0 +1,47 @@
+<span class="move-dialog-header" fxLayoutAlign="space-between center" mat-dialog-title>{{ data.title }}
+  <button mat-icon-button (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</span>
+
+<mat-dialog-content class="move-dialog">
+
+  <h4>Select destination</h4>
+  <div>Board</div>
+  <div fxFlexLayout="row">
+    <mat-form-field appearance="outline" style="width: 350px;">
+      <!-- <mat-label>Current Board</mat-label> -->
+      <mat-select [(value)]="data.selectedBoard" placeholder="Select Board">
+        <mat-option *ngFor="let board of boards" [value]="board">
+          {{ board }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="5px">
+    <div>List
+      <mat-form-field appearance="outline" style="width: 260px;">
+        <!-- <mat-label>Current List</mat-label> -->
+        <mat-select [(value)]="data.selectedList" placeholder="Select List">
+          <mat-option *ngFor="let list of lists" [value]="list">
+            {{ list }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>Position
+      <mat-form-field appearance="outline" style="width: 80px;">
+        <!-- <mat-label>Position</mat-label>/ -->
+        <mat-select [(value)]="data.selectedPosition">
+          <mat-option *ngFor="let position of positions" [value]="position">
+            {{ position }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button pButton [disabled]="isFieldInvalid()" (click)="onSubmit()" label="Move"></button>
+</mat-dialog-content>

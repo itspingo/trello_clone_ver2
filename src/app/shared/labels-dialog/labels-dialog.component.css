@@ -1,10 +1,35 @@
 .full-width {
   width: 100%;
+  margin-top: 10px;
+}
+
+.label-dialog-header {
+  background-color: #282e33;
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 8px; /* Optional: Add spacing between items */
 }
 
 .label-color-box {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 40px;
+  margin-right: 8px; /* Space between label and button */
+  padding: 0 0 4px 4px;
+  cursor: pointer;
+}
+
+.edit-button {
+  margin-left: 2px; /* Push the button to the right */
 }

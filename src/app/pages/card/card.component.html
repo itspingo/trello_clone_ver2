@@ -1,4 +1,3 @@
-
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
     <mat-card-title>
@@ -18,6 +17,13 @@
   <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
   <mat-card-content cdkDropList [cdkDropListData]="cardTextsArray" (cdkDropListDropped)="dropText($event)">
     <div cdkDrag *ngFor="let text of cardTextsArray; let i = index" class="card-content">
+      <span style="display: inline-flex; gap: 5px;" *ngIf="labels.length > 0">
+        <span class="label-container" *ngFor="let label of labels" [class.expanded]="label.expanded"
+          (click)="toggleLabel(label)">
+          <span class="label-color" [style.backgroundColor]="label.color"></span>
+          <span class="label-title" *ngIf="label.expanded">{{ label.title }}</span>
+        </span>
+      </span>
       <div (click)="openDialog(text)" class="card-text">{{text}}
         <span class="edit-button-container">
           <button class="custom-edit-button" (click)="editCard(i)">

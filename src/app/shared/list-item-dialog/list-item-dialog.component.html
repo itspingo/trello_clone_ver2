@@ -16,17 +16,32 @@
     fxLayoutGap="16px">
     <!-- 70% Container -->
     <div fxFlex="100" class="input-container">
-      <span style="font-size: small; padding-top: 10px;">
-        Notifications
-      </span>
+      <div>
+        <p style="font-size: small; padding-top: 10px;">
+          Labels
+        </p>
+        <span class="color-labels" *ngFor="let colorLabel of labels">
+          <button (click)="handleLabels()" [style.background]="colorLabel.color" mat-button>
+            {{ colorLabel.title }}
+          </button>
+        </span>
 
-      <span>
-        <button mat-flat-button (click)="toggleVisibility()">
-          <mat-icon>visibility</mat-icon>
-          {{ visibility ? 'Watching' : 'Watch' }}
-          <mat-icon *ngIf="visibility" class="tick-icon">check</mat-icon>
+        <button mat-button (click)="handleLabels()">
+        <mat-icon>add</mat-icon>
         </button>
-      </span>
+
+        <span>
+          <p style="font-size: small; padding-top: 10px;">
+            Notifications
+          </p>
+          <button mat-flat-button (click)="toggleVisibility()">
+            <mat-icon>visibility</mat-icon>
+            {{ visibility ? 'Watching' : 'Watch' }}
+            <mat-icon *ngIf="visibility" class="tick-icon">check</mat-icon>
+          </button>
+        </span>
+      </div>
+
       <!-- <mat-form-field class="full-width">
         <input matInput placeholder="Description" [(ngModel)]="description">
       </mat-form-field> -->
@@ -74,8 +89,7 @@
         mat-button>{{button}}</button>
       <mat-divider></mat-divider>
       <mat-divider></mat-divider>
-      <button class="transparent-button" *ngFor="let button of actionButtons" mat-button>{{button}}</button>
-
+      <button (click)="onActionClick(actionButton)" class="transparent-button" *ngFor="let actionButton of useActions" mat-button>{{actionButton}}</button>
     </div>
   </mat-dialog-content>
 

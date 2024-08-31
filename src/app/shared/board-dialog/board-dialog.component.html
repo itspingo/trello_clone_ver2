@@ -1,6 +1,37 @@
-<h2 class="board-header" mat-dialog-title>{{ data.title }}</h2>
+<h2 class="board-header" fxLayoutAlign="space-between center" mat-dialog-title>{{ data.title }}
+<button mat-icon-button (click)="onCancel()">
+  <mat-icon>close</mat-icon>
+</button>
+</h2>
+
+<!-- <span class="board-header" fxLayoutAlign="space-between center" mat-dialog-title>{{ data.title }}
+  <button mat-icon-button (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</span> -->
+
 
 <mat-dialog-content class="board-dialog">
+
+  <div class="color-test-container" [ngClass]="selectedColorClass"  [ngStyle]="{'background-image': 'url(' + selectedImageUrl + ')', 'background-size': 'cover', 'background-position': 'center'}">
+    <img src="../../../assets/board color container.svg" alt="Not Found">
+  </div>
+
+<span style="color: #B6C2CF; font-size: small;" for="background-picker">background</span>
+
+  <div class="main-container">
+    <button style="margin: 0px; padding: 0px;" class="image-buttons" *ngFor="let image of images" [ngClass]="image.class" (click)="selectImage(image)">
+      <img [src]="image.url" [alt]="image.alt" [ngStyle]="{'width.px': imageWidth, 'height.px': imageHeight}" class="image-thumbnail">
+    </button>
+  </div>
+
+  <div class="color-picker-container">
+    <button class="color-buttons" *ngFor="let color of colors" [ngClass]="color.class" (click)="selectColor(color)">
+    </button>
+    <button class="more-color-button">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+  </div>
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>{{ data.fieldLabel }}</mat-label>
     <input matInput [placeholder]="data.placeholder" [(ngModel)]="data.fieldValue" required>
@@ -17,13 +48,21 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <button pButton class="w-full" [disabled]="isFieldInvalid()" (click)="onSubmit()" label="Create"></button>
+
 </mat-dialog-content>
 
-<mat-dialog-actions class="board-footer" align="end">
-  <button mat-button color="warn" (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" [disabled]="isFieldInvalid()" (click)="onSubmit()">Create</button>
+<!-- <mat-dialog-actions class="board-footer" align="end"> -->
+  <!-- <button mat-button color="warn" (click)="onCancel()">Cancel</button> -->
+  <!-- <button mat-button color="primary" [disabled]="isFieldInvalid()" (click)="onSubmit()">Create</button> -->
   <!-- <button mat-button (click)="onTemplate()">Start with a template</button> -->
-</mat-dialog-actions>
+
+  <!-- <button pButton style="width: 80%;" [disabled]="isFieldInvalid()" (click)="onSubmit()" label="Create"></button> -->
+  <!-- <button pButton class="w-full" label="Login" size="small" type="submit" [disabled]="SignInForm.invalid"></button> -->
+  <!-- <button class="create-button" [disabled]="isFieldInvalid()" (click)="onSubmit()">Create</button> -->
+
+<!-- </mat-dialog-actions> -->
 
 <!-- <div class="footer-note">
   <p>By using images from Unsplash, you agree to their license and Terms of Service</p>

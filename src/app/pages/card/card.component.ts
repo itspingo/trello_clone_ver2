@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { CardService } from '../../shared/card.service';
+import { CardService } from '../../shared/card-service/card.service';
 import { Card } from 'src/app/shared/models/cards';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { ListItemDialogComponent } from 'src/app/shared/list-item-dialog/list-item-dialog.component';
+import { ListItemColorService } from 'src/app/shared/list-item-color-service/list-item-color.service';
+import { Label } from 'src/app/shared/models/label.interface';
 
 @Component({
   selector: 'board-card',
@@ -22,11 +24,14 @@ export class CardComponent implements OnInit {
   cardTextsArray: string[] = [];
   newCardText: string = '';
   isAddingCard: boolean = false;
+  labels: Label[] = [];
+
 
   cardListTitle = new FormControl('', Validators.required);
 
   constructor(
     private cardService: CardService,
+    private listItemService: ListItemColorService,
     public dialog: MatDialog,
   ) { }
 
@@ -35,6 +40,10 @@ export class CardComponent implements OnInit {
       this.cardListTitle.setValue(this.card.card_list_title);
       this.cardTextsArray = this.card.card_text;
     }
+
+    this.listItemService.labels$.subscribe(labels => {
+      this.labels = labels;
+    });
   }
 
   dropText(event: CdkDragDrop<string[]>) {
@@ -113,6 +122,14 @@ export class CardComponent implements OnInit {
       console.log('The dialog was closed', result);
     });
 
+  }
+
+  getLabels(): Label[] {
+    return this.listItemService.getLabels();
+  }
+
+  toggleLabel(label: Label): void {
+    label.expanded = !label.expanded; // Toggle the expanded state
   }
 
 }

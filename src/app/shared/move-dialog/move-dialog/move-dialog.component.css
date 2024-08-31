@@ -1,0 +1,32 @@
+.move-dialog-header {
+  background-color:#323940;
+  color: #B6C2CF;
+   font-size: medium;
+}
+
+.move-dialog {
+  background-color:#323940;
+
+}
+
+.font-style {
+  font-size: small;
+  font-weight: 100;
+  color: #B6C2CF;
+}
+
+.board-dropdown-field {
+  /* width: 100%; */
+  margin-bottom: 20px;
+  /* display: grid; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.lists-positions-dropdowns-fields {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 15px;
+}
+
+

@@ -17,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 import { CardComponent } from '../card/card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CardService } from 'src/app/shared/card.service';
+import { CardService } from 'src/app/shared/card-service/card.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SubnavComponent } from 'src/app/shared/subnav/subnav.component';
 import { SidebarComponent } from 'src/app/shared/sidebar/sidebar.component';
@@ -34,6 +34,11 @@ import { EditorModule } from 'primeng/editor';
 import { DropdownModule } from 'primeng/dropdown';
 import { LabelsDialogComponent } from 'src/app/shared/labels-dialog/labels-dialog.component';
 import { CreateLabelDialogComponent } from 'src/app/shared/labels-dialog/create-label-dialog/create-label-dialog.component';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { ListItemColorService } from 'src/app/shared/list-item-color-service/list-item-color.service';
+import { ButtonModule } from 'primeng/button';
+import { MoveDialogComponent } from 'src/app/shared/move-dialog/move-dialog/move-dialog.component';
+import { CopyDialogComponent } from 'src/app/shared/copy-dialog/copy-dialog/copy-dialog.component';
 
 
 
@@ -54,8 +59,9 @@ import { CreateLabelDialogComponent } from 'src/app/shared/labels-dialog/create-
     ListItemDialogComponent,
     MembersDialogComponent,
     LabelsDialogComponent,
-    CreateLabelDialogComponent
-
+    CreateLabelDialogComponent,
+    MoveDialogComponent,
+    CopyDialogComponent
   ],
 
   imports: [
@@ -87,12 +93,15 @@ import { CreateLabelDialogComponent } from 'src/app/shared/labels-dialog/create-
     MatSelectModule,
     MatCheckboxModule,
     EditorModule,
-    DropdownModule
+    DropdownModule,
+    ColorPickerModule,
+    ButtonModule
 
   ],
 
   providers: [
-    CardService
+    CardService,
+    ListItemColorService
   ]
 })
 export class DashboardModule { }

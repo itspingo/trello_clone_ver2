@@ -1,12 +1,43 @@
-<h2 mat-dialog-title>Create Label</h2>
+<span class="create-label-dialog-header" mat-dialog-title>
+  <div>
+    <button mat-icon-button (click)="onCancel()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div>
+    <button mat-icon-button (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  {{data.title}}
+</span>
 <div mat-dialog-content>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Title" [(ngModel)]="labelTitle">
+
+  <!-- [style.background]="selectedColor" -->
+  <div class="color-preview">
+    {{ labelTitle }}
+  </div>
+
+
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput [placeholder]="data.placeholder" (input)="showColorText($event)" minlength="3" maxlength="20"
+      [(ngModel)]="labelTitle">
   </mat-form-field>
-  <mat-form-field class="full-width">
-    <p-colorPicker [(ngModel)]="selectedColor"></p-colorPicker>
-  </mat-form-field>
-  <div class="color-preview" [style.background]="selectedColor"></div>
+
+  <div style="text-align: center;">
+    Select a color
+  </div>
+
+  <div style="text-align: center;">
+    <p-colorPicker [(ngModel)]="selectColor"></p-colorPicker>
+  </div>
+
+  <mat-divider></mat-divider>
+
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="createLabel()">Create</button>

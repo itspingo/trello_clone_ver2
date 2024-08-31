@@ -1,6 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ChangeDetectionStrategy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { CardService } from 'src/app/shared/card.service';
+import { CardService } from 'src/app/shared/card-service/card.service';
+import { ListItemColorService } from 'src/app/shared/list-item-color-service/list-item-color.service';
 import { Card } from 'src/app/shared/models/cards';
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,33 @@ export class DashboardComponent implements OnInit {
 
   isAddingCard: boolean = false;
   cards: Card[] = [];
+  backgroundColorClass = '';
+  backgroundImageUrl: string = '';
 
-  constructor(private cardservice: CardService) {}
+
+
+  constructor(private cardservice: CardService, private colorservice: ListItemColorService) {}
 
   ngOnInit(): void {
     this.loadCards();
+    this.colorservice.color$.subscribe(colorClass => {
+      this.backgroundColorClass = colorClass;
+    });
+    this.colorservice.currentBackgroundImage.subscribe(imageUrl => {
+      this.backgroundImageUrl = imageUrl;
+      this.applyBackgroundImage();
+    });
   }
+
+  applyBackgroundImage(): void {
+    document.body.style.backgroundImage = `url(${this.backgroundImageUrl})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+  }
+
+  // onColorChanged(newColor: string): void {
+  //   document.body.style.backgroundColor = newColor;
+  // }
 
   drop(event: CdkDragDrop<Card[]>) {
     console.log("Previous Index:", event.previousIndex);

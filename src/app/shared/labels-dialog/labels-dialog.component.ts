@@ -1,11 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateLabelDialogComponent } from './create-label-dialog/create-label-dialog.component';
-
-interface Label {
-  title: string;
-  color: string;
-}
+import { Label } from '../models/label.interface';
+import { ListItemColorService } from '../list-item-color-service/list-item-color.service';
 @Component({
   selector: 'app-labels-dialog',
   templateUrl: './labels-dialog.component.html',
@@ -13,49 +10,68 @@ interface Label {
 })
 export class LabelsDialogComponent {
 
-  labels: Label[] = [
-    { title: 'Label 1', color: 'yellow' },
-    { title: 'Label 2', color: 'red' },
-    // Add more labels as needed
-  ];
-
+  labels: Label[] = [];
+  searchText: string = '';
   selectedLabels: Label[] = [];
-  searchText = '';
+searchQuery: any;
+
 
   constructor(
+    private colorservice: ListItemColorService,
     public dialogRef: MatDialogRef<LabelsDialogComponent>,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
-
-  filteredLabels(): Label[] {
-    return this.labels.filter(label =>
-      label.title.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+  ) {
+    this.labels = this.colorservice.getLabels();
   }
 
+  ngOnInit(): void {
+    // Subscribe to the selected labels observable
+    this.colorservice.labels$.subscribe(labels => {
+      this.labels = labels;
+    });
+
+  }
+
+  filteredLabels(): Label[] {
+  const searchText = this.searchText?.toLowerCase() || '';  // Safely handle undefined or null searchText
+
+  return this.labels.filter(label =>
+    label.title?.toLowerCase().includes(searchText) // Safely handle undefined or null title
+  );
+}
+
   toggleLabel(label: Label): void {
-    const index = this.selectedLabels.indexOf(label);
-    if (index >= 0) {
-      this.selectedLabels.splice(index, 1);
-    } else {
-      this.selectedLabels.push(label);
-    }
+    this.colorservice.toggleLabelSelection(label);
   }
 
   isChecked(label: Label): boolean {
-    return this.selectedLabels.indexOf(label) >= 0;
+    return this.colorservice.getLabels().some(l => l.title === label.title);
   }
+
 
   openCreateLabelDialog(): void {
     const dialogRef = this.dialog.open(CreateLabelDialogComponent, {
-      width: '300px',
+      width: '450px',
+       data: {
+        title: 'Create Label',
+        fieldLabel: 'create label',
+        placeholder: 'Create label',
+        errorMessage: 'Please create a Label',
+        fieldValue: ''
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.labels.push(result);
+        // this.colorservice.addLabel(result);
+        this.labels = this.colorservice.getLabels();
       }
     });
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 }

@@ -1,16 +1,27 @@
-<h2 mat-dialog-title>Labels</h2>
-<div mat-dialog-content>
-  <mat-form-field class="full-width">
+<span class="label-dialog-header" fxLayoutAlign="space-between center" mat-dialog-title>Labels
+  <button mat-icon-button (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</span>
+
+<mat-dialog-content style="background-color: #282e33;">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-icon matPrefix>search</mat-icon>
     <input matInput placeholder="Search labels..." [(ngModel)]="searchText">
   </mat-form-field>
-  <div *ngFor="let label of filteredLabels()">
+  <div *ngFor="let label of filteredLabels()" class="label-container">
     <mat-checkbox (change)="toggleLabel(label)" [checked]="isChecked(label)">
-      <span [style.background]="label.color" class="label-color-box"></span>
-      {{label.title}}
+      <div [style.background]="label.color" class="label-color-box">
+        {{label.title}}
+      </div>
     </mat-checkbox>
+    <button mat-button class="edit-button">
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="openCreateLabelDialog()">Create a new label</button>
+</mat-dialog-content>
+
+<div style="background-color: #282e33;" mat-dialog-actions>
+  <button style="width: 100%;" mat-button (click)="openCreateLabelDialog()">Create a new label</button>
 </div>
 

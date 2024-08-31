@@ -1,4 +1,4 @@
-<div fxLayout="column" class="container">
+<div fxLayout="column" class="container" [ngClass]="backgroundColorClass">
   <app-navbar></app-navbar>
   <div fxLayout="row" fxLayoutAlign="start start" class="main-content">
     <app-sidebar class="sidebar"></app-sidebar>
@@ -6,9 +6,9 @@
       <span>
         <app-subnav></app-subnav>
       </span>
-      <div style="box-sizing: border-box;">
+      <!-- <div style="box-sizing: border-box;">
         <img class="background-image" src="../../assets/sunset.jpg" alt="NoImageFound" />
-      </div>
+      </div> -->
 
       <div style="padding: 20px;" cdkDropList fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="12px" (cdkDropListDropped)="drop($event)">
         <ng-container *ngFor="let card of cards; let i = index">

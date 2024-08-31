@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BoardDialogComponent } from '../board-dialog/board-dialog.component';
-import { CardService } from '../card.service';
+import { CardService } from '../card-service/card.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +10,7 @@ import { CardService } from '../card.service';
 })
 export class NavbarComponent {
 
+ selectedColorClass: string = '';
   searchFieldText = "Jonathan";
 
 
@@ -25,11 +26,19 @@ export class NavbarComponent {
 
   }
 
+  // updateDashboardBackground(colorClass: string): void {
+  //   const dashboardElement = document.querySelector('.dashboard-body');
+  //   if (dashboardElement) {
+  //     dashboardElement.className = `dashboard-body ${colorClass}`;
+  //   }
+  // }
+
+
   openDialog(): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {
-      width: '400px',
+      width: '330px',
       data: {
-        title: 'Board title',
+        title: 'Create Board',
         fieldLabel: 'Board title *',
         placeholder: 'Enter board title',
         errorMessage: 'Board title is required',
@@ -46,6 +55,4 @@ export class NavbarComponent {
       }
     });
   }
-
-
 }
