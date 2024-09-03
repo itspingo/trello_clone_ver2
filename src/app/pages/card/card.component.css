@@ -1,3 +1,5 @@
+
+
 .background-image {
   position: absolute;
   top: 8%;
@@ -259,6 +261,11 @@ mat-card-title input {
   /* white-space: nowrap;  */
   /* overflow: hidden; */
   text-overflow: ellipsis; /* Adds "..." if the text is too long */
+}
+
+.list-item-dialog-container {
+  border-radius: 8px;
+  position: absolute;
 }
 
 

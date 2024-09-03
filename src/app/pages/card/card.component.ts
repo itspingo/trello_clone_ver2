@@ -114,8 +114,13 @@ export class CardComponent implements OnInit {
   openDialog(title: string): void {
     const dialogRef = this.dialog.open(ListItemDialogComponent, {
       width: '60%',
-      height: '100%',
-      data: { title, cardListTitle: this.cardListTitle.value }
+      // height: '100%',
+      data: { title, cardListTitle: this.cardListTitle.value },
+      panelClass: 'list-item-dialog-container',
+      position: {
+        top: '50px',
+          // Adds a margin of 50px from the top
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
