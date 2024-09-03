@@ -32,7 +32,7 @@
       <mat-icon>more_horiz</mat-icon>
     </button>
   </div>
-  <mat-form-field appearance="fill" class="full-width">
+  <mat-form-field appearance="outline" class="full-width">
     <mat-label>{{ data.fieldLabel }}</mat-label>
     <input matInput [placeholder]="data.placeholder" [(ngModel)]="data.fieldValue" required>
     <mat-error *ngIf="isFieldInvalid()">
@@ -40,7 +40,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
+  <mat-form-field appearance="outline" class="full-width">
     <mat-label>Visibility</mat-label>
     <mat-select [(value)]="data.visibility">
       <mat-option *ngFor="let option of data.visibilityOptions" [value]="option">
